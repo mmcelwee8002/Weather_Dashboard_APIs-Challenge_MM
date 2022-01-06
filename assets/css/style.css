@@ -1,0 +1,48 @@
+header{
+    background-color: rgb(44, 44, 156);
+    height: 10vh;
+    width: 100%;
+}
+
+
+/* CARDS */
+.card {
+    margin: 0 0 20px 0;
+    border-color: black;
+    border-style: groove;
+    width: 300px;
+    margin: 10px;
+    
+    
+  }
+  
+  .card-header {
+    color: var(--primary);
+    background-color: lightblue;
+    padding: 2.5%;
+    border-color: black;
+    border-style: groove;
+    width: 300px;
+    
+  }
+  
+  .card-body {
+    padding: 2.5%;
+    background-color: lightgray;
+    border-color: black;
+    border-style: groove;
+    width: 300px;
+    padding: 30px;
+  }
+  
+  .btn{
+      color: blue;
+      background-color: burlywood;
+  }
+
+  .sidebar{
+    background-color: coral;
+    width: 25vw;
+    height: 50vh;
+    left: 100%;
+  }
