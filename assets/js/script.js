@@ -1,6 +1,12 @@
 let submit = document.querySelector("#submit-button");
 let MyKey = '7f3ebf71d1f7628ae2b6e804de9ef527';
+var searchFormEl = document.querySelector("#search-form");
+var citySearchEl = document.querySelector("#city-search");
 
+var formSubmitHandler = function(event) {
+   event.preventDefault();
+   console.log(event);
+ };
 
 var getWeather = function(name){
     
@@ -16,11 +22,13 @@ var getWeather = function(name){
      });   
 
 });  
-
-
-  
 }
-getWeather();
+
+
+
+
+ searchFormEl.addEventListener("submit", formSubmitHandler);
+
 
 
 

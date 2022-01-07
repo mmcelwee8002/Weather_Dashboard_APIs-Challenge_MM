@@ -11,27 +11,51 @@
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
-<body>
-    <Header>
-        <h2>Weather Dashboard</h2>
-    </Header>
-    <section class="sidebar">
-        <div class="container">
-            <!-- Content here -->
 
-            <div class="card">
-                <h3 class="card-header">Search for a City</h3>
-                <form id="user-form" class="card-body">
-                    <label class="form-label" for="username"></label>
-                    <input autocomplete="off" name="username" id="username" type="text" autofocus="true"
-                        class="form-input" />
-                    <button type="submit" class="btn" id="submit-button">Submit</button>
-                </form>
-            </div>
+<Header>
+    <h2>Weather Dashboard</h2>
+</Header>
 
+<body class="flex-row justify-space-between">
+    <div class="col-12 col-md-4"></div>
+          
+    <div class="col-12 col-md-8"></div>
+
+    <!-- Content here -->
+
+    <div class="sidebar">
+
+        <form id="search-form">
+        <div>
+        <label class="form-label" for="city-search">Search for a City</label>
+        </div>
+        <input autocomplete="off" name="citySearch" id="city-search" type="text" autofocus="true" class="city-search" />
+        <div>
+            <button type="submit" class="btn" id="submit-button">Submit</button>
         </div>
 
-    </section>
+
+    </div>
+
+    <div class="middle">
+        <h1>test</h1>
+        
+            
+          </main>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

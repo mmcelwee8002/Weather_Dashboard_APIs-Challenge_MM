@@ -1,56 +1,76 @@
+* {box-sizing: border-box;}
+
+
 header{
   background-image: linear-gradient(to right, blue , purple);
   background-color: lightblue; /* For browsers that do not support gradients */
     height: 150px;
-    width: 100%;
+    width: 100vw;
+    
     text-align: center;
     color: white;
+    background-size: cover;
+    overflow: hidden;
    }
 header h2{
   padding-top: 40px;
 }
 
 /* CARDS */
-.card {
-    margin: 0 0 20px 0;
-    border-color: black;
-    border-style: groove;
-    width: 300px;
-    margin: 10px;
-    
-    
-  }
-  
-  .card-header {
-    color: var(--primary);
-    background-color: lightblue;
-    padding: 2.5%;
-    border-color: black;
-    border-style: groove;
-    max-width: 300px;
-    
-  }
-  
-  .card-body {
-    padding: 2.5%;
-    background-color: lightgray;
-    border-color: black;
-    border-style: groove;
-   max-width: 300px;
-    padding: 30px;
-  }
+.main-body{
+  flex-basis: auto;
+  flex-wrap: wrap;
+}
   
   .btn{
       color: blue;
       background-color: burlywood;
-      margin-top: 10px;
-  }
+      border-style: groove;
+      border-color: black;
+      max-width: 25%;
+      min-width: 5vw;
+      font-size: 1vw;
+      margin: 10px;
+     }
 
-  .sidebar{
-    background-color: grey;
-    padding: 10px;
-    max-width: 450px;
-    height: 500px;
-    left: 100%;
-    margin: 10px;
+
+  .sidebar {
+    height: 400px;
+    width: 400px;
+    position: fixed;
+    z-index: 1;
+    top: 200px;
+    left: 10px;
+    background-color: lightblue;
+    overflow-x: hidden;
+    padding-top: 16px;
+   
+    
   }
+  .city-search{
+    max-width: 50vw;
+    width: 14vw;
+  }
+  .middle{
+    background-color: rgb(122, 118, 118);
+    margin-left: 450px; /* Same as the width of the sidenav */
+    margin-top: 51px;
+    padding: 0px 10px;
+    width: 45vw;
+    height: 400px;
+   flex: auto;
+    }
+  
+    /* @media screen and (max-width: 500px) {
+      .header {
+        float: none;
+        display: block;
+        text-align: left;
+      } */
+
+
+  /* Add media queries for small screens (when the height of the screen is less than 450px, add a smaller padding and font-size) */
+/* @media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+} */
