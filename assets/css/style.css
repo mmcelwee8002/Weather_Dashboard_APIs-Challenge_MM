@@ -1,9 +1,14 @@
 header{
-    background-color: rgb(44, 44, 156);
-    height: 10vh;
+  background-image: linear-gradient(to right, blue , purple);
+  background-color: lightblue; /* For browsers that do not support gradients */
+    height: 150px;
     width: 100%;
+    text-align: center;
+    color: white;
+   }
+header h2{
+  padding-top: 40px;
 }
-
 
 /* CARDS */
 .card {
@@ -22,7 +27,7 @@ header{
     padding: 2.5%;
     border-color: black;
     border-style: groove;
-    width: 300px;
+    max-width: 300px;
     
   }
   
@@ -31,18 +36,21 @@ header{
     background-color: lightgray;
     border-color: black;
     border-style: groove;
-    width: 300px;
+   max-width: 300px;
     padding: 30px;
   }
   
   .btn{
       color: blue;
       background-color: burlywood;
+      margin-top: 10px;
   }
 
   .sidebar{
-    background-color: coral;
-    width: 25vw;
-    height: 50vh;
+    background-color: grey;
+    padding: 10px;
+    max-width: 450px;
+    height: 500px;
     left: 100%;
+    margin: 10px;
   }
