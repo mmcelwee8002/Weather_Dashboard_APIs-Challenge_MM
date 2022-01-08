@@ -52,6 +52,10 @@ header h2{
     max-width: 50vw;
     width: 14vw;
   }
+
+  #city-search-term{
+    text-transform: capitalize;
+  }
   .middle{
     background-color: rgb(122, 118, 118);
     margin-left: 450px; /* Same as the width of the sidenav */
@@ -62,6 +66,7 @@ header h2{
    flex: auto;
    font-size: 40px;
    font-weight: bolder;
+   
     }
   
     .weather-Information {
