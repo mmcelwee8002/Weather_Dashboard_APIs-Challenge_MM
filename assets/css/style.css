@@ -1,12 +1,11 @@
 * {box-sizing: border-box;}
-
+* {font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;}
 
 header{
   background-image: linear-gradient(to right, blue , purple);
   background-color: lightblue; /* For browsers that do not support gradients */
     height: 150px;
     width: 100vw;
-    
     text-align: center;
     color: white;
     background-size: cover;
@@ -14,6 +13,7 @@ header{
    }
 header h2{
   padding-top: 40px;
+  font-size: 40px;
 }
 
 /* CARDS */
@@ -44,7 +44,8 @@ header h2{
     background-color: lightblue;
     overflow-x: hidden;
     padding-top: 16px;
-   
+   font-size: 20px;
+   font-weight: bold;
     
   }
   .city-search{
@@ -59,8 +60,15 @@ header h2{
     width: 45vw;
     height: 400px;
    flex: auto;
+   font-size: 40px;
+   font-weight: bolder;
     }
   
+    .weather-Information {
+      padding: 0;
+      list-style: none;
+    }
+
     /* @media screen and (max-width: 500px) {
       .header {
         float: none;
