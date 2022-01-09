@@ -25,22 +25,44 @@ var getWeather = function (cityName) {
 
    let apiURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=imperial&appid=" + MyKey;
 
-
+   console.log(cityName)
+   
    // make a request to the url
    fetch(apiURL).then(function (response) {
       console.log(response)
       response.json().then(function (data) {
          displayWeather(data, cityName)
          console.log(data);
+         console.log(data.coord.lat)
+      
+
+      let lattitude = data.coord.lat
+      let longitude = data.coord.lon;
+
+
+      let apiURL2 = `https://api.openweathermap.org/data/2.5/onecall?lat=${lattitude}&lon=${longitude}&units=imperial&appid=${MyKey2}`
+      console.log(data.coord.lat);
+
+       fetch(apiURL2).then(function (response) {
+         response.json().then(function (data) {
+            displayWeather(data);
+         })
       });
    });
 
+      
 
-   var displayWeather = function (weather, searchTerm) {
-      function retrunMulipleElements() {
-         return [weather.main.temp, weather.wind.speed, weather.main.humidity]
+   });
+}
+   var displayWeather =  function (data, searchTerm) {
 
-      }
+
+
+
+      console.log(data.coord.lat);
+      console.log(data.current.uvi);
+
+
 
       //clear old content
       weatherContainerEl.textContent = "";
@@ -48,52 +70,51 @@ var getWeather = function (cityName) {
       clearOutW.textContent = "";
       clearOutH.textContent = "";
       citySearchTerm.textContent = searchTerm;
-      clearOutUV.textContent = "";
+      // clearOutUV.textContent = "";
 
-      // format weather attribute
-      var cityTemp = retrunMulipleElements();
-
+     
 
 
-      var firstValue = retrunMulipleElements[0]
-      var secondValue = retrunMulipleElements[1];
-      var thridValue = retrunMulipleElements[2]
-      var forthValue = retrunMulipleElements[3]
+      // return [data.main.temp, data.wind.speed, data.main.humidity, data.coord.lat, data.coord.lon]
+      $("#temp").append(document.createTextNode("Current temp: " + Math.round(data.main.temp) + "°F"))
+      $("#wind").append(document.createTextNode("Wind speed: " + data.wind.speed + " MPH"))
+      $("#humidity").append(document.createTextNode("Humidity: " + data.main.humidity + "%"));
+      $("#UV-Index").append(document.createTextNode("UV-Index: " + data.current.uvi));
 
-      $("#temp").append(document.createTextNode("Current temp: " + Math.round(cityTemp[0]) + "°F"))
-      $("#wind").append(document.createTextNode("Wind speed: " + cityTemp[1] + " MPH"))
-      $("#humidity").append(document.createTextNode("Humidity: " + cityTemp[2] + "%"));
-      $("#UV-Index").append(document.createTextNode("UV-Index: " + cityTemp[3]));
    }
-}
-
-//Api to get UV index
-let getUVI = function (lat, lon) {
-   var apiURL2 = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=" + MyKey2;
 
 
-   fetch(apiURL2).then(function (response) {
-      response.json().then(function (data) {
-         displayUVI(data, lat, lon);
-         console.log(data);
-
-      })
-   })
-}
-
-// })
-// if (typeof loc === "object") {
-//    cityName = `lat=${loc.latitude}&lon=${loc.longitude}`;
-//  } else {
-//    cityName = `q=${loc}`;
-//  }
 
 
-// }
-// var displayUVI = function (current, searchTerm) {
-//    function retrunMulipleElements() {
-//       return [current.uvi]
-//    }}
+
+// }).then(function (Current) {
+//    function returnMultipleEl() {
+//       return [Current.uvi]
+//    }
+
+//    var uvIndex = retrunMulipleElements()
+//    var firstIndex = retrunMulipleElements[0]
+
+//    $("#UV-Index").append(document.createTextNode("UV-Index: " + uvIndex[0]));
+// });
+// }    
+//     if(responseuv.value > 0 && responseuv.value <=2){
+//         cityUV.attr("class","green")
+//     }
+//     else if (responseuv.value > 2 && responseuv.value <= 5){
+//         cityUV.attr("class","yellow")
+//     }
+//     else if (responseuv.value >5 && responseuv.value <= 7){
+//         cityUV.attr("class","orange")
+//     }
+//     else if (responseuv.value >7 && responseuv.value <= 10){
+//         cityUV.attr("class","red")
+//     }
+//     else{
+//         cityUV.attr("class","purple")
+//     }
+// });
+
 
 
 
@@ -127,9 +148,3 @@ let getUVI = function (lat, lon) {
 
 
 searchFormEl.addEventListener("submit", formSubmitHandler);
-
-
-
-
-// console.log(response.weather);
-// console.log(response.name);
