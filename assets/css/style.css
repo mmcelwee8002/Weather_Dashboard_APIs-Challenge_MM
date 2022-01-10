@@ -10,6 +10,7 @@ header{
     color: white;
     background-size: cover;
     overflow: hidden;
+    margin-bottom: 50px;
    }
 header h2{
   padding-top: 40px;
@@ -21,7 +22,9 @@ header h2{
   flex-basis: auto;
   flex-wrap: wrap;
 }
-  
+  .top{
+    margin: 30px;
+  }
   .btn{
       color: blue;
       background-color: burlywood;
@@ -75,13 +78,13 @@ header h2{
   height: 100px;
   width: 100px;
   background-color: tan;
-
 } */
-.weather-box {
+.column {
   width: 200px;
   height: 200px;
   margin: 10px;
   float: left;
+  background-color: tan;
 }  
   
     .weather-Information {

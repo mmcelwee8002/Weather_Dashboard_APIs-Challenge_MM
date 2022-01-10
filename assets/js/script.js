@@ -61,6 +61,8 @@ submit.addEventListener("click", function () {
    console.log("the button was clicked")
    // weatherContainerEl.textContent = "";
    
+
+   
    localStorage.setItem('city-search', JSON.stringify(citySearchEl.value));
    $('#city').append(document.createTextNode(citySearchEl.value));
  
