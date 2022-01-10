@@ -1,0 +1,65 @@
+      let lat = data.coord.lat
+      let long = data.coord.lon;
+
+, weather.coord.lat, weather.coord.lon
+
+
+         // let lat = data.coord.lat
+         // let long = data.coord.lon;
+
+         // let apiURL2 = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&units=imperial&appid=${MyKey2}`
+
+         // console.log(data.coord.lat);
+         // console.log(data.coord.lon);
+
+         // fetch(apiURL2).then(function (response) {
+         //    console.log(response)
+         //    response.json().then(function (data) {
+         //       displayWeather(data);
+         //       console.log(data.current.uvi)
+
+
+      // }).then(function (Current) {
+      //    function returnMultipleEl() {
+      //       return [Current.uvi]
+      //    }
+
+      //    var uvIndex = retrunMulipleElements()
+      //    var firstIndex = retrunMulipleElements[0]
+
+      //    $("#UV-Index").append(document.createTextNode("UV-Index: " + uvIndex[0]));
+      // });
+      // }    
+      //     if(responseuv.value > 0 && responseuv.value <=2){
+      //         cityUV.attr("class","green")
+      //     }
+      //     else if (responseuv.value > 2 && responseuv.value <= 5){
+      //         cityUV.attr("class","yellow")
+      //     }
+      //     else if (responseuv.value >5 && responseuv.value <= 7){
+      //         cityUV.attr("class","orange")
+      //     }
+      //     else if (responseuv.value >7 && responseuv.value <= 10){
+      //         cityUV.attr("class","red")
+      //     }
+      //     else{
+      //         cityUV.attr("class","purple")
+      //     }
+      // });
+
+      //UV colors
+      // if (responseuv.value > 0 && responseuv.value <= 2) {
+      //    cityUV.attr("class", "green")
+      // }
+      // else if (responseuv.value > 2 && responseuv.value <= 5) {
+      //    cityUV.attr("class", "yellow")
+      // }
+      // else if (responseuv.value > 5 && responseuv.value <= 7) {
+      //    cityUV.attr("class", "orange")
+      // }
+      // else if (responseuv.value > 7 && responseuv.value <= 10) {
+      //    cityUV.attr("class", "red")
+      // }
+      // else {
+      //    cityUV.attr("class", "purple")
+      // }
