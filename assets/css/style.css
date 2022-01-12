@@ -22,9 +22,7 @@ header h2{
   flex-basis: auto;
   flex-wrap: wrap;
 }
-  .top{
-    margin: 30px;
-  }
+
   .btn{
       color: blue;
       background-color: burlywood;
@@ -56,6 +54,16 @@ header h2{
     border-color: black;
     border-style: groove;
   }
+p{
+  color: black;
+  font-size: x-large;
+}
+#city-search-term{
+  color: black;
+  font-size: xx-large;
+  text-decoration: underline;
+}
+
 
   #city-search-term{
     text-transform: capitalize;
@@ -74,30 +82,30 @@ header h2{
    font-weight: bolder;
    }
 
-/* #weather-box{
-  height: 100px;
-  width: 100px;
-  background-color: tan;
-} */
+#weather-box{
+ 
+  background-color: black;
+}
 .column {
   width: 200px;
   height: 200px;
   margin: 10px;
   float: left;
-  background-color: tan;
+  background-color: lightblue;
 }  
-  
+  #five-day{
+    
+padding-top: 40px;
+
+  }
     .weather-Information {
       padding: 0;
       list-style: none;
     }
 
-    /* @media screen and (max-width: 500px) {
-      .header {
-        float: none;
-        display: block;
-        text-align: left;
-      } */
+    @media screen and (max-width: 500px) {
+    
+      }
 
 
   /* Add media queries for small screens (when the height of the screen is less than 450px, add a smaller padding and font-size) */

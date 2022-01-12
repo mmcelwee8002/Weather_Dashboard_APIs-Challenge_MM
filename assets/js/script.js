@@ -9,6 +9,8 @@ var clearOutT = document.querySelector("#temp")
 var clearOutW = document.querySelector("#wind")
 var clearOutH = document.querySelector("#humidity")
 var clearOutUV = document.querySelector("#UV-Index")
+const ul = document.querySelector('ul')
+
 
 var formSubmitHandler = function (event) {
    event.preventDefault();
@@ -56,19 +58,25 @@ var displayWeather = function (data, searchTerm) {
    // $("#UV-Index").append(document.createTextNode("UV-Index: " + data.current.uvi));
 
 }
+
+//need to load the local storage
+// cityArray with the data
+
+
 //save city in search
+let cityArray = []
+cityArray = JSON.parse(localStorage.getItem('city-search'));
+
 submit.addEventListener("click", function () {
    console.log("the button was clicked")
-   // weatherContainerEl.textContent = "";
-   
-
-   
-   localStorage.setItem('city-search', JSON.stringify(citySearchEl.value));
+  
+   cityArray.push(citySearchEl.value);
+   localStorage.setItem('city-search', JSON.stringify(cityArray));
    $('#city').append(document.createTextNode(citySearchEl.value));
  
-   citySearchEl.value = JSON.parse(localStorage.getItem('city-search'));
+   
 })
 
-
+// citySearchEl.value = JSON.parse(localStorage.getItem('city-search'));
 
 searchFormEl.addEventListener("submit", formSubmitHandler);
