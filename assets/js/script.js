@@ -12,6 +12,8 @@ var clearOutUV = document.querySelector("#UV-Index")
 const ul = document.querySelector('ul')
 
 
+
+
 var formSubmitHandler = function (event) {
    event.preventDefault();
    let citySearch = citySearchEl.value.trim();
@@ -37,6 +39,36 @@ var getWeather = function (cityName) {
       })
    })
 }
+
+// clears search field on reload
+window.onload = function(){
+   document.getElementById('city-search').value= "";
+}
+
+
+
+
+let cityArray = []
+
+
+//this will set cityArray.push to Nill
+// cityArray = JSON.parse(localStorage.getItem('city-search'));
+
+submit.addEventListener("click", function () {
+   console.log("the button was clicked")
+   citySearchEl.textContent = "";
+   cityArray.push(citySearchEl.value);
+   localStorage.setItem('city-search', JSON.stringify(cityArray));
+  
+   let x = document.createElement('li');
+   var t = document.createTextNode(citySearchEl.value);
+   x.appendChild(t);
+   document.getElementById('city').appendChild(x)
+})
+
+
+// document.getElementById('clear').onclick = localStorage.clear()
+
 var displayWeather = function (data, searchTerm) {
 
    console.log(data.main.temp);
@@ -62,21 +94,16 @@ var displayWeather = function (data, searchTerm) {
 //need to load the local storage
 // cityArray with the data
 
-
 //save city in search
-let cityArray = []
-cityArray = JSON.parse(localStorage.getItem('city-search'));
 
-submit.addEventListener("click", function () {
-   console.log("the button was clicked")
-  
-   cityArray.push(citySearchEl.value);
-   localStorage.setItem('city-search', JSON.stringify(cityArray));
-   $('#city').append(document.createTextNode(citySearchEl.value));
- 
-   
-})
+citySearchEl.value = JSON.parse(localStorage.getItem('city-search'));
 
-// citySearchEl.value = JSON.parse(localStorage.getItem('city-search'));
+
+
+
+
+
+
+
 
 searchFormEl.addEventListener("submit", formSubmitHandler);

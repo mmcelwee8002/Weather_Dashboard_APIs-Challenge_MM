@@ -55,11 +55,16 @@ header h2{
     border-style: groove;
   }
 p{
+  color: white;
+  font-size: x-large;
+}
+H1{
   color: black;
   font-size: x-large;
 }
+
 #city-search-term{
-  color: black;
+  color: white;
   font-size: xx-large;
   text-decoration: underline;
 }
