@@ -47,3 +47,4 @@ for (let i = 0; i < cityRedisplay.length; i++) {
 // figure out UV index display 
 // click on search history and brings back weather
 
+event.preventDefault();

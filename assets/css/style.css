@@ -58,8 +58,14 @@ H1{
   font-size: xx-large;
   text-decoration: underline;
 }
+#clear{
+  margin-top: 40px;
+  margin-bottom: 10px;
+}
+#submit-button{
+  margin-top: 10px;
 
-
+}
   #city-search-term{
     text-transform: capitalize;
   }
@@ -98,13 +104,6 @@ padding-top: 40px;
       list-style: none;
     }
 
-    @media screen and (max-width: 500px) {
-    
-      }
+   
 
 
-  /* Add media queries for small screens (when the height of the screen is less than 450px, add a smaller padding and font-size) */
-/* @media screen and (max-height: 450px) {
-  .sidebar {padding-top: 15px;}
-  .sidebar a {font-size: 18px;}
-} */

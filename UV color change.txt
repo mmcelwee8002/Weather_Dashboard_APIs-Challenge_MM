@@ -1,0 +1,14 @@
+   let uv = data.current.uvi
+      // uvColor.removeClass("w3-green w3-red w3-yellow")
+
+  function uvColor(){
+      uvColor = $('#UV-Index')
+      
+      if (uv < 4) 
+         uvColor (color === "w3-green")
+      else if (uv > 7) 
+         uvColor  (color ==="w3-red")
+      else {
+         uvColor  (color ==="w3-yellw")
+      }
+   }

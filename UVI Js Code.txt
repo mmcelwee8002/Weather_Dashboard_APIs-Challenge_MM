@@ -63,3 +63,16 @@
       // else {
       //    cityUV.attr("class", "purple")
       // }
+
+      let cityLat = data.coord.lat
+      let cityLon = data.coord.lon;
+   let apiURL2 = `https://api.openweathermap.org/data/2.5/onecall?lat=${cityLat}&lon=${cityLon}&units=imperial&exclude=hourly,minutely,alerts&appid=${MyKey}`
+   
+   fetch(apiURL2).then(function (response) {
+   if (response.ok) {
+   response.json().then(function (data) {
+      displayWeather(data, cityLat, cityLon)
+   console.log(data.current.uvi)
+   
+   })}
+})
