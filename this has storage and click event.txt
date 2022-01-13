@@ -1,0 +1,49 @@
+const ul = document.querySelector('ul')
+let cityDisplay = document.getElementById('city');
+let cityArray = []
+
+
+// var formSubmitHandler = function (event) {
+   submit.addEventListener("click", function () {
+      console.log("the button was clicked")
+      console.log(cityArray);
+      citySearchEl.textContent = "";
+      cityArray.push(citySearchEl.value);
+     
+      localStorage.setItem('city-search', JSON.stringify(cityArray));
+     
+      let x = document.createElement('li');
+      var t = document.createTextNode(citySearchEl.value);
+      x.appendChild(t);
+      document.getElementById('city').appendChild(x)
+
+      
+   let citySearch = citySearchEl.value.trim();
+   if (citySearch) {
+      getWeather(citySearch);
+      citySearchEl.value = "";
+   } else {
+      alert("please enter a city");
+   }
+   })
+  
+
+
+let cityRedisplay = JSON.parse(localStorage.getItem('city-search'));
+console.log(JSON.parse(localStorage.getItem('city-search')))
+
+
+for (let i = 0; i < cityRedisplay.length; i++) {
+   let x = document.createElement('li');
+   var t = document.createTextNode(cityRedisplay[i]);
+   x.appendChild(t);
+   document.getElementById('city').appendChild(x)
+   
+}
+
+// Psudo code
+// AP to display 5 day forcast
+// Clear out local storage
+// figure out UV index display 
+// click on search history and brings back weather
+

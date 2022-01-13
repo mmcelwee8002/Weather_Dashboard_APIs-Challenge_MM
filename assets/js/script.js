@@ -10,12 +10,31 @@ var clearOutW = document.querySelector("#wind")
 var clearOutH = document.querySelector("#humidity")
 var clearOutUV = document.querySelector("#UV-Index")
 const ul = document.querySelector('ul')
+let cityDisplay = document.getElementById('city');
+let cityArray = []
+// Psudo code
+// AP to display 5 day forcast
+// Clear out local storage
+// figure out UV index display 
+// click on search history and brings back weather
 
 
-
-
-var formSubmitHandler = function (event) {
+// var formSubmitHandler = function (event) {
+ submit.addEventListener('click', function(){ 
+   console.log("the button was clicked") 
    event.preventDefault();
+  console.log(cityArray);
+   citySearchEl.textContent = "";
+   cityArray.push(citySearchEl.value);
+
+   localStorage.setItem('city-search', JSON.stringify(cityArray));
+
+   let x = document.createElement('li');
+   var t = document.createTextNode(citySearchEl.value);
+   x.appendChild(t);
+   document.getElementById('city').appendChild(x)
+
+
    let citySearch = citySearchEl.value.trim();
    if (citySearch) {
       getWeather(citySearch);
@@ -23,7 +42,13 @@ var formSubmitHandler = function (event) {
    } else {
       alert("please enter a city");
    }
-}
+})
+
+let cityRedisplay = JSON.parse(localStorage.getItem('city-search'));
+console.log(JSON.parse(localStorage.getItem('city-search')))
+
+
+
 var getWeather = function (cityName) {
    //formating the weather API
 
@@ -45,30 +70,6 @@ window.onload = function(){
    document.getElementById('city-search').value= "";
 }
 
-
-
-
-let cityArray = []
-
-
-//this will set cityArray.push to Nill
-// cityArray = JSON.parse(localStorage.getItem('city-search'));
-
-submit.addEventListener("click", function () {
-   console.log("the button was clicked")
-   citySearchEl.textContent = "";
-   cityArray.push(citySearchEl.value);
-   localStorage.setItem('city-search', JSON.stringify(cityArray));
-  
-   let x = document.createElement('li');
-   var t = document.createTextNode(citySearchEl.value);
-   x.appendChild(t);
-   document.getElementById('city').appendChild(x)
-})
-
-
-// document.getElementById('clear').onclick = localStorage.clear()
-
 var displayWeather = function (data, searchTerm) {
 
    console.log(data.main.temp);
@@ -89,6 +90,14 @@ var displayWeather = function (data, searchTerm) {
    $("#humidity").append(document.createTextNode("Humidity: " + data.main.humidity + "%"));
    // $("#UV-Index").append(document.createTextNode("UV-Index: " + data.current.uvi));
 
+}
+
+for (let i = 0; i < cityRedisplay.length; i++) {
+   let x = document.createElement('li');
+   var t = document.createTextNode(cityRedisplay[i]);
+   x.appendChild(t);
+   document.getElementById('city').appendChild(x)
+   
 }
 
 //need to load the local storage

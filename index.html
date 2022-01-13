@@ -17,23 +17,24 @@
     <h2>Weather Dashboard</h2>
 </Header>
 
-<body >
-  
+<body>
+
     <section>
         <div class="w3-cell-row" id="weather-box">
 
             <div class="w3-container w3-pale-green w3-cell">
-              <H1>Search For a City</H1>
-              <div>
-                <form id="search-form">
-                <label class="form-label" for="city-search"></label>
-            </div>
-            <input autocomplete="off" name="citySearch" id="city-search" type="text" autofocus="true"
-                class="city-search" />
-            <div>
-                <button type="submit" class="w3-button w3-black w3-round-xxlarge" id="submit-button">Submit</button>
-                <ul id="city"></ul>
-            </div>
+                <H1>Search For a City</H1>
+                <div>
+                    <form id="search-form">
+                        <label class="form-label" for="city-search"></label>
+                </div>
+                <input autocomplete="off" name="citySearch" id="city-search" type="text" autofocus="true"
+                    class="city-search" />
+                <div>
+                    <button type="submit" class="w3-button w3-black w3-round-xxlarge" id="submit-button">Submit</button>
+                    <ul id="city" ></ul>
+                </div>
+                
             </div>
             <div class="w3-container w3-dark-grey w3-cell">
 
@@ -43,15 +44,15 @@
                 <p id="wind"></p>
                 <p id="humidity"></p>
                 <p id="UV-Index"></p>
-              <p></p>
+                <p></p>
             </div>
-          
-          </div>
-        
 
-</section>
+        </div>
 
 
+    </section>
+
+    <!-- <button class="w3-button w3-black w3-round-xxlarge" id="clear">Clear Search</button> -->
 
     <div class="columns" id="five-day">
         <div class="column">
@@ -70,8 +71,6 @@
         <div class="column">
             Fifth column
         </div>
-
-
 
 
 

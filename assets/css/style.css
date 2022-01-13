@@ -35,25 +35,13 @@ header h2{
      }
 
 
-  .sidebar {
-    height: 400px;
-    width: 400px;
-    position: fixed;
-    z-index: 1;
-    top: 200px;
-    left: 10px;
-    background-color: lightblue;
-    overflow-x: hidden;
-    padding-top: 16px;
-   font-size: 20px;
-   font-weight: bold;
+  #city{
+font-size: x-large;
+text-transform: capitalize;
+
   }
-  .city-search{
-    max-width: 50vw;
-    width: 14vw;
-    border-color: black;
-    border-style: groove;
-  }
+
+
 p{
   color: white;
   font-size: x-large;
@@ -62,6 +50,8 @@ H1{
   color: black;
   font-size: x-large;
 }
+
+
 
 #city-search-term{
   color: white;
