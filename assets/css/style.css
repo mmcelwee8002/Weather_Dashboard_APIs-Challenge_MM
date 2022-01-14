@@ -12,9 +12,10 @@ header{
     overflow: hidden;
     margin-bottom: 50px;
    }
-header h2{
+header h1{
   padding-top: 40px;
   font-size: 40px;
+  color: white;
 }
 
 /* CARDS */
@@ -87,11 +88,11 @@ H1{
  
   background-color: black;
 }
-.column {
-  width: 200px;
+.w3-col  {
+ margin: 30px;
   height: 200px;
-  margin: 10px;
-  float: left;
+  
+  
   background-color: lightblue;
 }  
   #five-day{

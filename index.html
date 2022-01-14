@@ -14,7 +14,8 @@
 </head>
 
 <Header>
-    <h2>Weather Dashboard</h2>
+    <h1>Weather Dashboard</h1>
+    <h2></h2><span id="alsoToday"></span></h2>
 </Header>
 
 <body>
@@ -32,17 +33,18 @@
                     class="city-search" />
                 <div>
                     <button type="submit" class="w3-button w3-black w3-medium" id="submit-button">Submit</button>
-                    <ul id="city" ></ul>
+                    <ul id="city"></ul>
                 </div>
                 <div>
-                    <button type="submit" class="w3-button w3-black w3-tiny" id="clear" 
-                    onclick="clearStorage()">Clear Search</button>
+                    <button type="submit" class="w3-button w3-black w3-tiny" id="clear" onclick="clearStorage()">Clear
+                        Search</button>
 
                 </div>
             </div>
             <div class="w3-container w3-dark-grey w3-cell">
 
                 <h2></h2><span id="city-search-term"></span></h2>
+
                 <div id="weather-container" class="weather-Information"></div>
                 <p id="temp"></p>
                 <p id="wind"></p>
@@ -57,24 +59,38 @@
     </section>
 
     <!-- <button class="w3-button w3-black w3-round-xxlarge" id="clear">Clear Search</button> -->
+    <h2>Five day forcast</h2>
+    <h3 id="currentDay" class="todaysDate"></h3>
 
+    <div class="w3-row">
+        <div class="w3-col w3-green w3-container" style="width:20%">
+
+            <p id="daily-temp" </p></p>
+            <p id="daily-wind" </p></p>
+            <p id="daily-humidity" </p>
+        </div>
+
+
+
+
+        <!-- 
     <div class="columns" id="five-day">
-        <div class="column">
-            First column
+        <div class="column" >
+           <h2 id="day1"></h2> 
+        </div>
+        <!<div class="column" >
+            <h2 id="day2"></h2>
         </div>
         <div class="column">
-            Second column
+            <h2 id="day3"></h2>
         </div>
-        <div class="column">
-            Third column
-        </div>
-        <div class="column">
+        <div class="column" id="day4">
             Fourth column
         </div>
 
-        <div class="column">
+        <div class="column" id="day5">
             Fifth column
-        </div>
+        </div> -->
 
 
 
@@ -83,7 +99,7 @@
 
 
 
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
         <script src="./assets/js/script.js"></script>
 </body>

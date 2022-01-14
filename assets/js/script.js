@@ -13,6 +13,10 @@ var clearOutUV = document.querySelector("#UV-Index")
 const ul = document.querySelector('ul')
 let cityDisplay = document.getElementById('city');
 let cityArray = []
+let currentDay = moment().format("dddd MMM D, YYYY");
+document.getElementById('currentDay').innerHTML = currentDay
+let alsoToday = moment().format("dddd MMM D, YYYY");
+document.getElementById('alsoToday').innerHTML = currentDay
 
 
 // Psudo code
@@ -23,10 +27,10 @@ let cityArray = []
 
 
 // var formSubmitHandler = function (event) {
- submit.addEventListener('click', function(){ 
-   console.log("the button was clicked") 
+submit.addEventListener('click', function () {
+   console.log("the button was clicked")
    event.preventDefault();
-  console.log(cityArray);
+   console.log(cityArray);
    citySearchEl.textContent = "";
    cityArray.push(citySearchEl.value);
 
@@ -50,34 +54,23 @@ let cityArray = []
 let cityRedisplay = JSON.parse(localStorage.getItem('city-search'));
 console.log(JSON.parse(localStorage.getItem('city-search')))
 
-
-
 var getWeather = function (cityName) {
    //formating the weather API
 
    let apiURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=imperial&appid=" + MyKey;
-
    console.log(cityName)
-
-
    // make a request to the url
    fetch(apiURL).then(function (response) {
       console.log(response)
       response.json().then(function (data) {
          displayWeather(data, cityName)
-      })})
-
-
-
+      })
+   })
 }
 // clears search field on reload
-window.onload = function(){
-   document.getElementById('city-search').value= "";
+window.onload = function () {
+   document.getElementById('city-search').value = "";
 }
-
-
-   
-   
 
 var displayWeather = function (data, searchTerm) {
 
@@ -99,21 +92,34 @@ var displayWeather = function (data, searchTerm) {
 
    let apiURL2 = `https://api.openweathermap.org/data/2.5/onecall?lat=${cityLat}&lon=${cityLon}&units=imperial&exclude=hourly,minutely,alerts&appid=${MyKey}`
 
-fetch(apiURL2)
-   .then(function(response){
-   if (response.ok){
-      
-      response.json().then(function (data){
-         console.log(data.current.uvi)
-         $("#UV-Index").append(document.createTextNode("UV-Index: " + data.current.uvi));
+   fetch(apiURL2)
+      .then(function (response) {
+         if (response.ok) {
+
+            response.json().then(function (data) {
+               console.log(data.current.uvi)
+
+               $("#UV-Index").append(document.createTextNode("UV-Index: " + data.current.uvi));
+
+               //5 day start
+               console.log(data.daily[0].temp.day)
+
+
+
+               $("#daily-temp").append(document.createTextNode("day x: " + data.daily[0].temp.day))
+               $("#daily-wind").append(document.createTextNode("day x: " + data.daily[0].wind_speed + "MPH"))
+               $("#daily-humidity").append(document.createTextNode("day x: " + data.daily[0].humidity + "%"))
+
+
+            })
+         }
       })
-   }})
-   
+
 
    $("#temp").append(document.createTextNode("Current temp: " + Math.round(data.main.temp) + "°F"))
    $("#wind").append(document.createTextNode("Wind speed: " + data.wind.speed + " MPH"))
    $("#humidity").append(document.createTextNode("Humidity: " + data.main.humidity + "%"));
-   
+
 
 }
 
@@ -122,16 +128,19 @@ for (let i = 0; i < cityRedisplay.length; i++) {
    var t = document.createTextNode(cityRedisplay[i]);
    x.appendChild(t);
    document.getElementById('city').appendChild(x)
-   
 }
+
 citySearchEl.value = JSON.parse(localStorage.getItem('city-search'));
 
-
 // clear storage and list called in HTML
-function clearStorage(){
-localStorage.clear()
-
+function clearStorage() {
+   localStorage.clear()
 }
+
+
+
+
+
 
 
 
