@@ -3,9 +3,10 @@
 
 ## Purpose
 A website is challange  for bootcamp so it is an assignment
-It is the start of a password generator that I will use to showcase my development skills.
+It is a display and functioning weather application
 
-Create a simple calendar application that allows the user to save events for each hour of the day. This app will run in the browser and feature dynamically updated HTML and CSS.
+Search for city and be presented with current weather attributes
+Search for a city and be presented with a 5 day outlook
 
 
 ## Built With
@@ -19,7 +20,7 @@ Create a simple calendar application that allows the user to save events for eac
 
 ## Website
 
-xx
+https://mmcelwee8002.github.io/Weather_Dashboard_APIs-Challenge_MM/
 
 ## Contribution
 Matthew McElwee
