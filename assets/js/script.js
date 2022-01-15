@@ -138,7 +138,7 @@ var displayWeather = function (data, searchTerm) {
 
 
                   const div = document.createElement('div');
-                  div.classList.add("w3-col", "w3-indigo", "w3-container", 'fivedayforcastcontainers')
+                  div.classList.add("w3-col", "w3-indigo","w3-mobile", "w3-container", 'fivedayforcastcontainers')
                   let fiveDayRound = Math.round(fiveDayTemp)
                   let windSpeedRound = Math.round(fiveDayWindSpeed)
                   let fiveDay = `${fiveDayForcastDates} <p>Temp: ${fiveDayRound} °F</p>`
