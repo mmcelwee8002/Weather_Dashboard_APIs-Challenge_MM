@@ -10,6 +10,12 @@ var clearOutT = document.querySelector("#temp")
 var clearOutW = document.querySelector("#wind")
 var clearOutH = document.querySelector("#humidity")
 var clearOutUV = document.querySelector("#UV-Index")
+var clearOutDT = document.querySelector("#daily-temp")
+var clearOutDW = document.querySelector("#daily-wind")
+var clearOutDH = document.querySelector("#daily-humidity")
+
+
+
 const ul = document.querySelector('ul')
 let cityDisplay = document.getElementById('city');
 let cityArray = []
@@ -26,9 +32,9 @@ document.getElementById('alsoToday').innerHTML = currentDay
 // click on search history and brings back weather
 
 
-// var formSubmitHandler = function (event) {
-submit.addEventListener('click', function () {
-   console.log("the button was clicked")
+//this is the first call to pull from the city box
+submit.addEventListener('click', function (findWeather) {
+
    event.preventDefault();
    console.log(cityArray);
    citySearchEl.textContent = "";
@@ -49,8 +55,11 @@ submit.addEventListener('click', function () {
    } else {
       alert("please enter a city");
    }
+
 })
 
+
+//this pulls from local storage and puts in left side box
 let cityRedisplay = JSON.parse(localStorage.getItem('city-search'));
 console.log(JSON.parse(localStorage.getItem('city-search')))
 
@@ -74,8 +83,6 @@ window.onload = function () {
 
 var displayWeather = function (data, searchTerm) {
 
-   console.log(data.main.temp);
-
    //clear old content
    weatherContainerEl.textContent = "";
    clearOutT.textContent = "";
@@ -84,45 +91,53 @@ var displayWeather = function (data, searchTerm) {
    citySearchTerm.textContent = searchTerm;
    clearOutUV.textContent = "";
 
+
+
    // format weather attribute
    let cityLat = data.coord.lat
    let cityLon = data.coord.lon;
-   console.log(data.coord.lat)
-   console.log(data.coord.lon)
 
    let apiURL2 = `https://api.openweathermap.org/data/2.5/onecall?lat=${cityLat}&lon=${cityLon}&units=imperial&exclude=hourly,minutely,alerts&appid=${MyKey}`
-
+   //call second API
    fetch(apiURL2)
       .then(function (response) {
          if (response.ok) {
 
             response.json().then(function (data) {
-               console.log(data.current.uvi)
 
                $("#UV-Index").append(document.createTextNode("UV-Index: " + data.current.uvi));
 
+
+
                //5 day start
-               console.log(data.daily[0].temp.day)
+
+               for (let i = 1; i < 6; i++) {
+                  // const element = array[index];
+                  let fiveDayTemp = data.daily[i].temp.day
+                  let fiveDayForcastDates = moment.unix(data.daily[i].dt).format('L')
 
 
+                  const div = document.createElement('div')
+                  // document.getElementById('displayfivedayforcastContainer').innerHTML
+                  let fiveDayForcastAttributes = document.createTextNode(fiveDayForcastDates + '  Temp: ' + Math.round(fiveDayTemp) + "°F")
+                  div.appendChild(fiveDayForcastAttributes, fiveDayForcastDates);
+                  const container = document.getElementById('displayfivedayforcastContainer');
+                  container.appendChild(div);
 
-               $("#daily-temp").append(document.createTextNode("day x: " + data.daily[0].temp.day))
-               $("#daily-wind").append(document.createTextNode("day x: " + data.daily[0].wind_speed + "MPH"))
-               $("#daily-humidity").append(document.createTextNode("day x: " + data.daily[0].humidity + "%"))
+
+               }
 
 
             })
          }
       })
-
-
+   //this displays daily temp on the right side
    $("#temp").append(document.createTextNode("Current temp: " + Math.round(data.main.temp) + "°F"))
    $("#wind").append(document.createTextNode("Wind speed: " + data.wind.speed + " MPH"))
    $("#humidity").append(document.createTextNode("Humidity: " + data.main.humidity + "%"));
 
-
 }
-
+//this pulls from local storage and displays under the search box
 for (let i = 0; i < cityRedisplay.length; i++) {
    let x = document.createElement('li');
    var t = document.createTextNode(cityRedisplay[i]);
@@ -130,13 +145,41 @@ for (let i = 0; i < cityRedisplay.length; i++) {
    document.getElementById('city').appendChild(x)
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// $("#daily-temp").append(document.createTextNode(fiveDayForcastDates + fiveDayTemp[1]))
+// $("#daily-wind").append(document.createTextNode("day x: " + data.daily[0].wind_speed + "MPH"))
+// $("#daily-humidity").append(document.createTextNode("day x: " + data.daily[0].humidity + "%"))
+
+
+
+
+
+
+
+
+
+
+
+
 citySearchEl.value = JSON.parse(localStorage.getItem('city-search'));
 
 // clear storage and list called in HTML
 function clearStorage() {
    localStorage.clear()
 }
-
 
 
 
