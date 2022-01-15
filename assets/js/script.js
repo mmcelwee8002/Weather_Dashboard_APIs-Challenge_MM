@@ -10,9 +10,8 @@ var clearOutT = document.querySelector("#temp")
 var clearOutW = document.querySelector("#wind")
 var clearOutH = document.querySelector("#humidity")
 var clearOutUV = document.querySelector("#UV-Index")
-var clearOutDT = document.querySelector("#daily-temp")
-var clearOutDW = document.querySelector("#daily-wind")
-var clearOutDH = document.querySelector("#daily-humidity")
+var clearOutDailycontainer = document.querySelector("#displayfivedayforcastContainer")
+
 
 
 
@@ -90,7 +89,7 @@ var displayWeather = function (data, searchTerm) {
    clearOutH.textContent = "";
    citySearchTerm.textContent = searchTerm;
    clearOutUV.textContent = "";
-
+   clearOutDailycontainer.textContent = "";
 
 
    // format weather attribute
@@ -110,19 +109,34 @@ var displayWeather = function (data, searchTerm) {
 
 
                //5 day start
+               let iconURL = 'http://openweathermap.org/img/wn/'
 
                for (let i = 1; i < 6; i++) {
                   // const element = array[index];
-                  let fiveDayTemp = data.daily[i].temp.day
-                  let fiveDayForcastDates = moment.unix(data.daily[i].dt).format('L')
+                  let fiveDayTemp = data.daily[i].temp.day;
+                  let fiveDayHumidity = data.daily[i].humidity;
+                  let fiveDayWindSpeed = data.daily[i].wind_speed;
+                  let fiveDayForcastDates = moment.unix(data.daily[i].dt).format('L');
+                  let dailyIcon = data.daily[i].weather[0].icon
 
 
-                  const div = document.createElement('div')
-                  // document.getElementById('displayfivedayforcastContainer').innerHTML
-                  let fiveDayForcastAttributes = document.createTextNode(fiveDayForcastDates + '  Temp: ' + Math.round(fiveDayTemp) + "°F")
-                  div.appendChild(fiveDayForcastAttributes, fiveDayForcastDates);
+
+                  const div = document.createElement('div');
+                  div.classList.add("w3-col", "w3-indigo", "w3-container", 'fivedayforcastcontainers')
+                  let fiveDayRound = Math.round(fiveDayTemp)
+                  let windSpeedRound = Math.round(fiveDayWindSpeed)
+                  let fiveDay = `${fiveDayForcastDates} <p>Temp: ${fiveDayRound} °F</p>`
+                  let humidityDisplay = `<p> Humidity: ${fiveDayHumidity} %</p>` 
+                  let windSpeedDisplay = `<p> Wind Speed:  ${windSpeedRound} MPH</p>`
+                  let iconDisplay = `<img src=${iconURL + dailyIcon + ".png"}>` 
+
+
+                  div.innerHTML = fiveDay + iconDisplay+ humidityDisplay + windSpeedDisplay 
+                
+
+                  // div.append(fiveDay);
                   const container = document.getElementById('displayfivedayforcastContainer');
-                  container.appendChild(div);
+                  container.append(div);
 
 
                }
