@@ -16,7 +16,7 @@ Search for a city and be presented with a 5 day outlook
 * Bootstrap
 * Moments.js
 * JQuery
-
+* W3-CSS
 
 ## Website
 
