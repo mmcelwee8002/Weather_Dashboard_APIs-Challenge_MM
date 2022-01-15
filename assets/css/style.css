@@ -41,10 +41,12 @@ font-size: x-large;
 text-transform: capitalize;
 
   }
-
+.todays-date{
+  color: aqua;
+}
 
 p{
-  color: white;
+  color: yellow;
   font-size: x-large;
 }
 H1{

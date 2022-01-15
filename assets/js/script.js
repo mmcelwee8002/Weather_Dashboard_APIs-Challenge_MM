@@ -11,17 +11,15 @@ var clearOutW = document.querySelector("#wind")
 var clearOutH = document.querySelector("#humidity")
 var clearOutUV = document.querySelector("#UV-Index")
 var clearOutDailycontainer = document.querySelector("#displayfivedayforcastContainer")
-
-
+let todaysDate = document.querySelector("#dateandTime")
+let weatherIcon = document.querySelector("#weatherIcon")
+let UVDisplay = document.querySelector("#UV-Index")
 
 
 const ul = document.querySelector('ul')
 let cityDisplay = document.getElementById('city');
 let cityArray = []
-let currentDay = moment().format("dddd MMM D, YYYY");
-document.getElementById('currentDay').innerHTML = currentDay
-let alsoToday = moment().format("dddd MMM D, YYYY");
-document.getElementById('alsoToday').innerHTML = currentDay
+
 
 
 // Psudo code
@@ -41,10 +39,14 @@ submit.addEventListener('click', function (findWeather) {
 
    localStorage.setItem('city-search', JSON.stringify(cityArray));
 
+
    let x = document.createElement('li');
    var t = document.createTextNode(citySearchEl.value);
+
    x.appendChild(t);
    document.getElementById('city').appendChild(x)
+   // append.createTextNode(alsoToday)
+
 
 
    let citySearch = citySearchEl.value.trim();
@@ -78,6 +80,7 @@ var getWeather = function (cityName) {
 // clears search field on reload
 window.onload = function () {
    document.getElementById('city-search').value = "";
+
 }
 
 var displayWeather = function (data, searchTerm) {
@@ -88,6 +91,7 @@ var displayWeather = function (data, searchTerm) {
    clearOutW.textContent = "";
    clearOutH.textContent = "";
    citySearchTerm.textContent = searchTerm;
+   todaysDate.textContent = moment().format("dddd MMM D, YYYY")
    clearOutUV.textContent = "";
    clearOutDailycontainer.textContent = "";
 
@@ -106,6 +110,18 @@ var displayWeather = function (data, searchTerm) {
 
                $("#UV-Index").append(document.createTextNode("UV-Index: " + data.current.uvi));
 
+               let uv = data.current.uvi
+               let uvBox = $("#UV-Index")
+               uvBox.text(`UV Index: ${uv}`)
+               uvBox.removeClass("w3-green w3-red w3-yellow")
+
+               if (uv < 4) {
+                  uvBox.addClass("w3-green")
+               } else if (uv > 7) {
+                  uvBox.addClass("w3-red")
+               } else {
+                  uvBox.addClass("w3-yellow")
+               }
 
 
                //5 day start
@@ -126,13 +142,13 @@ var displayWeather = function (data, searchTerm) {
                   let fiveDayRound = Math.round(fiveDayTemp)
                   let windSpeedRound = Math.round(fiveDayWindSpeed)
                   let fiveDay = `${fiveDayForcastDates} <p>Temp: ${fiveDayRound} °F</p>`
-                  let humidityDisplay = `<p> Humidity: ${fiveDayHumidity} %</p>` 
+                  let humidityDisplay = `<p> Humidity: ${fiveDayHumidity} %</p>`
                   let windSpeedDisplay = `<p> Wind Speed:  ${windSpeedRound} MPH</p>`
-                  let iconDisplay = `<img src=${iconURL + dailyIcon + ".png"}>` 
+                  let iconDisplay = `<img src=${iconURL + dailyIcon + ".png"}>`
 
 
-                  div.innerHTML = fiveDay + iconDisplay+ humidityDisplay + windSpeedDisplay 
-                
+                  div.innerHTML = fiveDay + iconDisplay + humidityDisplay + windSpeedDisplay
+
 
                   // div.append(fiveDay);
                   const container = document.getElementById('displayfivedayforcastContainer');
@@ -146,9 +162,13 @@ var displayWeather = function (data, searchTerm) {
          }
       })
    //this displays daily temp on the right side
+
+
+
    $("#temp").append(document.createTextNode("Current temp: " + Math.round(data.main.temp) + "°F"))
    $("#wind").append(document.createTextNode("Wind speed: " + data.wind.speed + " MPH"))
    $("#humidity").append(document.createTextNode("Humidity: " + data.main.humidity + "%"));
+
 
 }
 //this pulls from local storage and displays under the search box
@@ -158,6 +178,7 @@ for (let i = 0; i < cityRedisplay.length; i++) {
    x.appendChild(t);
    document.getElementById('city').appendChild(x)
 }
+
 
 
 
